@@ -1,12 +1,14 @@
 class Node {
-  private int data;
-  private Node left;
-  private Node right;
+  protected int data;
+  protected Node left;
+  protected Node right;
+  protected Node parent;
 
-  public Node(int initalData, Node initalLeft, Node initalRight) {
+  public Node(int initalData, Node initalLeft, Node initalRight, Node initalParent) {
     data = initalData;
     left = initalLeft;
     right = initalRight;
+    parent = initalParent;
   }
 
   public int getData() {
@@ -41,19 +43,19 @@ class Node {
     }
   }
 
-  public int getLeftmostData() {
+  public Node getLeftmost() {
     if (left != null) {
-      return left.getLeftmostData();
+      return left.getLeftmost();
     } else {
-      return this.getData();
+      return this;
     }
   }
 
-  public int getRightmostData() {
+  public Node getRightmost() {
     if (right != null) {
-      return right.getRightmostData();
+      return right.getRightmost();
     } else {
-      return this.getData();
+      return this;
     }
   }
 
