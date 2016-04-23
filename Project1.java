@@ -4,7 +4,7 @@ class Project1 {
     tree.insert(4, tree.root, null);
     tree.insert(1, tree.root, null);
     tree.insert(2, tree.root, null);
-    tree.insert(6, tree.root, null);
+    tree.insert(16, tree.root, null);
     tree.insert(5, tree.root, null);
     tree.insert(0, tree.root, null);
     tree.insert(3, tree.root, null);
@@ -12,11 +12,15 @@ class Project1 {
     System.out.println("root: " + tree.root.getData());
     System.out.println("leftmost: " + tree.root.getLeftmost().getData());
     System.out.println("successor of 3: " + tree.successor(3, tree.root).getData());
+    System.out.println("postorder: " + tree.postOrder(tree.root, ""));
 
-    tree.delete(2, tree.root);
-    System.out.println(tree.root.getLeft().getRight().getData());
 
     /*
+    tree.delete(2, tree.root);
+    System.out.println(tree.root.getLeft().getRight().getData());
+    System.out.println("preorder: " + tree.preOrder(tree.root, "").replaceAll(".(?!$)", "$0 "));
+    System.out.println("inorder: " + tree.inOrder(tree.root, "").replaceAll(".(?!$)", "$0 "));
+
     System.out.println("leftmost: " + tree.getLeftmostData(tree.root));
     System.out.println("rightmost: " + tree.getRightmostData(tree.root));
     tree.removeLeftmost(tree.root);

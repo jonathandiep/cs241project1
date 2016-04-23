@@ -116,6 +116,7 @@ public class BST {
     }
   }
 
+/*
   public boolean remove(int target) {
     Node cursor = root;
     Node parent = null;
@@ -157,25 +158,69 @@ public class BST {
     }
 
   }
-
-  /*
-  // must be implemented with recursion
-  // must be implemented with recursion
-  public Node delete(int data) {
-
-  }
-
-  public String preOrder() {
-
-  }
-
-  public String inOrder() {
-
-  }
-
-  public String postOrder() {
-
-  }
   */
+
+
+  public String preOrder(Node n, String s) {
+    String print = s;
+
+    // Process the root.
+    if (n != null) {
+      print += n.getData() + " ";
+    }
+
+    // Process the nodes in the left subtree with a recursive call.
+    if (n.getLeft() != null) {
+      print += preOrder(n.getLeft(), s);
+    }
+    // Process the nodes in the right subtree with a recursive call.
+    if (n.getRight() != null) {
+      print += preOrder(n.getRight(), s);
+    }
+
+    return print;
+  }
+
+  public String inOrder(Node n, String s) {
+    String print = s;
+
+    // Process the nodes in the left subtree with a recursive call.
+    if (n.getLeft() != null) {
+      print += inOrder(n.getLeft(), s);
+    }
+
+    // Process the root.
+    if (n != null) {
+      print += n.getData() + " ";
+    }
+
+    // Process the nodes in the right subtree with a recursive call.
+    if (n.getRight() != null) {
+      print += inOrder(n.getRight(), s);
+    }
+
+    return print;
+  }
+
+  public String postOrder(Node n, String s) {
+    String print = s;
+
+    // Process the nodes in the left subtree with a recursive call.
+    if (n.getLeft() != null) {
+      print += postOrder(n.getLeft(), s);
+    }
+
+    // Process the nodes in the right subtree with a recursive call.
+    if (n.getRight() != null) {
+      print += postOrder(n.getRight(), s);
+    }
+
+    // Process the root.
+    if (n != null) {
+      print += n.getData() + " ";
+    }
+
+    return print;
+  }
 
 }
