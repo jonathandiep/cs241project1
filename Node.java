@@ -1,3 +1,8 @@
+/**
+ * This is the Node that makes up the BST. I wanted to include a parent in this
+ * class because when I tried to find the predecessor or successor of a given
+ * value/node, it was almost impossible without climbing up the ancestry.
+ */
 class Node {
   protected int data;
   protected Node left;

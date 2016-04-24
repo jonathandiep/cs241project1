@@ -1,3 +1,8 @@
+/**
+ * This is the Binary Search Tree (BST) class. It only contains a root. I had
+ * thought about including the size and height of the tree, but it was not
+ * necessary for this project. All methods in the BST class are recursive.
+ */
 public class BST {
   protected Node root;
 
@@ -5,6 +10,26 @@ public class BST {
     root = null;
   }
 
+  /**
+   * The contains method will check if a given value is within a BST. This is
+   * used to prevent inserting duplicate values and deleting non-existent ones
+   */
+  public boolean contains(int target, Node n) {
+    if (n == null) return false;
+
+    if (n.getData() == target) {
+      return true;
+    } else if (n.getData() > target) {
+      return contains(target, n.getLeft());
+    } else {
+      return contains(target, n.getRight());
+    }
+  }
+
+  /**
+   * This is my implementation of the predecessor. Although I didn't have it, I
+   * implemented recursion into this algorithm because it's good practice.
+   */
   public Node predecessor(int target, Node n) {
     if (root == null) return null;
     if (n == root.getLeftmost()) return null;
@@ -33,6 +58,10 @@ public class BST {
     }
   }
 
+  /**
+   * This is my implementation of the successor. It is kind of like a mirrored
+   * version of the predecessor method.
+   */
   public Node successor(int target, Node n) {
     if (root == null) return null;
     if (n == root.getRightmost()) return null;
@@ -60,6 +89,11 @@ public class BST {
     }
   }
 
+  /**
+   * The insert method will insert a new value starting from the root. It will
+   * find the right place in the BST to create a new node containing the value.
+   * The implementation of this method is recursive.
+   */
   public Node insert(int element, Node n, Node p) {
     if (root == null) {
       root = new Node(element, null, null, null);
@@ -80,6 +114,10 @@ public class BST {
     }
   }
 
+  /**
+   * The delete method will delete a node from the BST based on a given value.
+   * This method is also recursive.
+   */
   public boolean delete(int target, Node n) {
 
     // case #1: root is empty
@@ -116,51 +154,9 @@ public class BST {
     }
   }
 
-/*
-  public boolean remove(int target) {
-    Node cursor = root;
-    Node parent = null;
-
-    // case #1: root is empty
-    if (cursor == null) return false;
-
-    while (true) {
-      if (cursor.getData() == target) {
-        if (cursor.getLeft() == null) {
-
-          // case #2: target found at root with no left child
-          if (cursor == root) {
-            root = root.getRight();
-            return true;
-          }
-
-          // case #3: target found with no left child
-          if (cursor == parent.getLeft()) {
-            parent.setLeft(cursor.getRight());
-          } else {
-            parent.setRight(cursor.getRight());
-          }
-          return true;
-        // case #4: there's a left child
-        } else {
-          cursor.setData(cursor.getLeft().getRightmost().getData());
-          cursor.setLeft(cursor.getLeft().removeRightmost());
-          return true;
-        }
-      } else if (target < cursor.getData()) {
-        parent = cursor;
-        cursor = cursor.getLeft();
-      } else {
-        parent = cursor;
-        cursor = cursor.getRight();
-      }
-
-    }
-
-  }
-  */
-
-
+  /**
+   *  This is the method that returns a string of the pre-order of the BST.
+   */
   public String preOrder(Node n, String s) {
     String print = s;
 
@@ -181,6 +177,9 @@ public class BST {
     return print;
   }
 
+  /**
+   *  This is the method that returns a string of the in-order of the BST.
+   */
   public String inOrder(Node n, String s) {
     String print = s;
 
@@ -202,6 +201,9 @@ public class BST {
     return print;
   }
 
+  /**
+   *  This is the method that returns a string of the post-order of the BST. 
+   */
   public String postOrder(Node n, String s) {
     String print = s;
 
