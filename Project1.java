@@ -62,11 +62,20 @@ class Project1 {
           }
           break;
         case 'P' :
-          System.out.println(tree.predecessor(Integer.parseInt(inputArr[1]), tree.root).getData());
+          int predecessor = Integer.parseInt(inputArr[1]);
+          if (tree.predecessor(predecessor, tree.root) != null) {
+            System.out.println(tree.predecessor(predecessor, tree.root).getData());
+          } else {
+            System.out.println(predecessor + " does not have a predecessor.");
+          }
           break;
         case 'S' :
-          String[] successor = input.split(" ");
-          System.out.println(tree.successor(Integer.parseInt(inputArr[1]), tree.root).getData());
+          int successor = Integer.parseInt(inputArr[1]);
+          if (tree.successor(successor, tree.root) != null) {
+            System.out.println(tree.successor(successor, tree.root).getData());
+          } else {
+            System.out.println(successor + " does not have a successor.");
+          }
           break;
         case 'H' :
           commandList();
